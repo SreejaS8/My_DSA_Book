@@ -3,16 +3,25 @@
 ## output : "apbqcr"
 
 class Solution(object):
-    def mergeAlternatively(self, s1, s2):
-        if(s1>s2):
-            m = s1
-        else:
-            m = s2
-        s = ""
-        for i in range(len(m)):
-            s = s+s1[i]+s2[i]
-        print(s)
-solution = Solution()
-s1 = str(input("s1: "))
-s2 = str(input("s2: "))
-solution.mergeAlternatively(s1, s2)
+    def mergeAlternately(self, word1, word2):
+        """
+        :type word1: str
+        :type word2: str
+        :rtype: str
+        """
+        s = ''
+        for i in range(max(len(word1), len(word2))):
+            try:
+                s += word1[i]
+            except IndexError:
+                s += ''
+            try:
+                s += word2[i]
+            except IndexError:
+                s += ''
+        return s
+    
+word1 = str(input())
+word2 = str(input())
+p = Solution().mergeAlternately(word1,word2)
+print(p)
